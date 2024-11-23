@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Schware",
+  "version": "1.0",
+  "description": "An extension that provides the enjoyment of advertisements for all websites.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["*://www.youtube.com/*", "<all_urls>"],
+  "web_accessible_resources": [{
+    "resources": [
+      "data/data_with_colors.json",
+      "data/icons/*"
+    ],
+    "matches": ["<all_urls>"]
+  }],
+  "content_scripts": [
+    {
+      "matches": ["*://www.youtube.com/*"],
+      "js": ["youtube.js"]
+    },
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": ["*://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
