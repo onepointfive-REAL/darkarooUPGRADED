@@ -95,7 +95,6 @@ const createAdBlockerOverlay = () => {
     document.body.appendChild(overlay);
 };
 
-// Run the check and show overlay if adblocker detected
 checkAdBlock().then(isBlocked => {
     if (isBlocked) {
         createAdBlockerOverlay();
