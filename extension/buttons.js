@@ -1,3 +1,18 @@
+/** Check for enable status */
+let buttonsEnabled = true;
+
+chrome.storage.sync.get(['scamButtons'], (result) => {
+    buttonsEnabled = result.scamButtons ?? true;
+    startSpawning();
+});
+
+chrome.runtime.onMessage.addListener((msg) => {
+    if (msg.type === 'featureToggle' && msg.feature === 'scamButtons') {
+        buttonsEnabled = msg.enabled;
+    }
+});
+
+/** Actual code */
 const CONFIG = {
     prizes: ["iPhone 15 Pro", "MacBook Air", "$1000 Amazon Card", "PS5", "Tesla Model 3", "Rolex Watch", "$500 Walmart Card", "AirPods Pro", "iPad Pro", "Bitcoin"],
     amounts: ["$50", "$100", "$250", "$500", "$1000", "$2500", "$5000", "₿1", "€1000"],
@@ -78,6 +93,8 @@ const closeButtonStyle = {
 }
 
 const injectScamButton = () => {
+    if (!buttonsEnabled) return;
+
     const styleSheet = document.createElement("style");
     styleSheet.textContent = CONFIG.animations.keyframes;
     document.head.appendChild(styleSheet);
@@ -132,10 +149,6 @@ const injectScamButton = () => {
 };
 
 const startSpawning = () => {
-    injectScamButton();
+    if (buttonsEnabled) injectScamButton();
     setTimeout(startSpawning, rand(8000, 10000));
 };
-
-document.readyState === "loading"
-    ? document.addEventListener("DOMContentLoaded", startSpawning)
-    : startSpawning();

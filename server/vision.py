@@ -188,7 +188,8 @@ class GazeMonitor:
                     
                     # Create tasks for sending to all clients
                     disconnected_clients = set()
-                    for client in self.connected_clients:
+                    # Create a copy of the set for iteration
+                    for client in list(self.connected_clients):
                         try:
                             await client.send(message)
                         except websockets.exceptions.ConnectionClosed:
@@ -199,9 +200,9 @@ class GazeMonitor:
                             disconnected_clients.add(client)
                     
                     # Remove disconnected clients
-                    for client in disconnected_clients:
-                        self.connected_clients.remove(client)
-                        print(f"Removed disconnected client. Total clients: {len(self.connected_clients)}")
+                    if disconnected_clients:
+                        self.connected_clients.difference_update(disconnected_clients)
+                        print(f"Removed disconnected clients. Total clients: {len(self.connected_clients)}")
 
                 # Show debug window if in debug mode
                 if self.debug_mode and debug_frame is not None:

@@ -1,3 +1,18 @@
+/** Check for enable status */
+let websitesEnabled = true;
+
+chrome.storage.sync.get(['popupAds'], (result) => {
+    websitesEnabled = result.popupAds ?? true;
+});
+
+chrome.runtime.onMessage.addListener((msg) => {
+    if (msg.type === 'featureToggle' && msg.feature === 'popupAds') {
+        websitesEnabled = msg.enabled;
+    }
+});
+
+/** Actual code */
+
 function getPaleColor(hue) {
     return `hsl(${hue}, 40%, 95%)`; // High lightness for pale colors
 }
@@ -145,6 +160,8 @@ function getRandomAd() {
 }
 
 function createWindow() {
+    if (!websitesEnabled) return;
+
     const ad = getRandomAd();
     if (!ad) return;
 
@@ -161,10 +178,10 @@ function createWindow() {
     floatingWindow.style.top = randomY + 'px';
 
     const iconUrl = ad.iconID ? 
-        chrome.runtime.getURL(`data/icons/${ad.iconID}.png`) :
-        chrome.runtime.getURL('data/icons/default.png');
+        chrome.runtime.getURL(`data/dataset/icons/${ad.iconID}.png`) :
+        chrome.runtime.getURL('data/dataset/icons/default.png');
 
-    const bgColor = ad.accentColor
+    const bgColor = ad.accentColor || "hsl(" + Math.floor(Math.random() * 360) + ", 40%, 95%)";
     const borderColor = getBorderColor(bgColor);
     const headerColor = getHeaderColor(bgColor);
     

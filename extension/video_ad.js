@@ -1,5 +1,50 @@
-const wsAudio = new WebSocket('ws://localhost:8766');
+let videoEnabled = true;
 let videoWindow = null;
+let adTimer = null;
+
+const wsAudio = new WebSocket('ws://localhost:8766');
+
+chrome.storage.sync.get(['videoAds'], (result) => {
+    videoEnabled = result.videoAds ?? true;
+    if (videoEnabled) {
+        scheduleNextAd();
+    }
+});
+
+// Listen for feature toggle messages
+chrome.runtime.onMessage.addListener((msg) => {
+    if (msg.type === 'featureToggle' && msg.feature === 'videoAds') {
+        videoEnabled = msg.enabled;
+        if (videoEnabled) {
+            scheduleNextAd();
+        } else {
+            clearTimeout(adTimer);
+            if (videoWindow) {
+                videoWindow.remove();
+                videoWindow = null;
+            }
+        }
+    }
+});
+
+function getRandomDelay() {
+    // Random delay between 8-10 minutes in milliseconds
+    return Math.floor(Math.random() * (10 - 8 + 1) + 8) * 60 * 1000;
+}
+
+function scheduleNextAd() {
+    if (!videoEnabled) return;
+    
+    const delay = getRandomDelay();
+    clearTimeout(adTimer);
+    
+    adTimer = setTimeout(() => {
+        if (enabled && !videoWindow) {
+            createVideoAd();
+        }
+        scheduleNextAd();
+    }, delay);
+}
 
 function createVideoAd() {
     const adWindow = document.createElement('div');
@@ -55,4 +100,6 @@ wsAudio.onmessage = (event) => {
     }
 };
 
-createVideoAd();
+if (videoEnabled) {
+    scheduleNextAd();
+}

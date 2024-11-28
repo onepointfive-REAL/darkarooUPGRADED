@@ -1,3 +1,18 @@
+/** Check for enable status */
+let baitEnabled = true;
+
+chrome.storage.sync.get(['antiAdblock'], (result) => {
+    baitEnabled = result.antiAdblock ?? true;
+});
+
+chrome.runtime.onMessage.addListener((msg) => {
+    if (msg.type === 'featureToggle' && msg.feature === 'antiAdblock') {
+        baitEnabled = msg.enabled;
+    }
+});
+
+/** Actual code */
+
 const GOOGLE_ADS_URL = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
 
 function timeoutFetch(url, options = {}) {
@@ -96,7 +111,7 @@ const createAdBlockerOverlay = () => {
 };
 
 checkAdBlock().then(isBlocked => {
-    if (isBlocked) {
+    if (isBlocked && baitEnabled) {
         createAdBlockerOverlay();
     }
 });

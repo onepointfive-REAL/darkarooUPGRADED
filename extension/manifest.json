@@ -1,26 +1,36 @@
 {
   "manifest_version": 3,
-  "name": "Schware",
+  "name": "Darkaroo",
   "version": "1.0",
   "description": "An extension that provides the enjoyment of advertisements for all websites.",
-  "permissions": ["activeTab", "scripting"],
-  "host_permissions": ["*://www.youtube.com/*", "<all_urls>"],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "webNavigation"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "web_accessible_resources": [{
     "resources": [
-      "data/data.json",
-      "data/icons/*",
+      "data/dataset/data.json",
+      "data/dataset/icons/*",
       "data/videos/*"
     ],
     "matches": ["<all_urls>"]
   }],
   "content_scripts": [
     {
-      "matches": ["*://www.youtube.com/*"],
-      "js": ["youtube.js"]
-    },
-    {
       "matches": ["<all_urls>"],
-      "js": ["content.js", "buttons.js", "bait.js", "video_ad.js"]
+      "js": ["websites.js", "buttons.js", "bait.js", "video_ad.js"],
+      "run_at": "document_idle"
     }
-  ]
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
 }
