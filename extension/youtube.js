@@ -1,4 +1,3 @@
-// youtube.js
 const ws = new WebSocket('ws://localhost:8765');
 
 function isPlayingAd() {

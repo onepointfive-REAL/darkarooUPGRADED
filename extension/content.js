@@ -12,11 +12,11 @@ function getHeaderColor(bgColor) {
 
 let adsData = [];
 
-fetch(chrome.runtime.getURL('data/data_with_colors.json'))
+fetch(chrome.runtime.getURL('data/dataset/data.json'))
     .then(response => response.json())
     .then(data => {
         adsData = data;
-        createWindow();
+        createWindow(); 
         setInterval(createWindow, 5000);
     })
     .catch(error => console.error('Error loading ads data:', error));

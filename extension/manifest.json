@@ -7,19 +7,20 @@
   "host_permissions": ["*://www.youtube.com/*", "<all_urls>"],
   "web_accessible_resources": [{
     "resources": [
-      "data/data_with_colors.json",
-      "data/icons/*"
+      "data/data.json",
+      "data/icons/*",
+      "data/videos/*"
     ],
     "matches": ["<all_urls>"]
   }],
   "content_scripts": [
     {
       "matches": ["*://www.youtube.com/*"],
-      "js": ["youtube.js", "buttons.js"]
+      "js": ["youtube.js"]
     },
     {
       "matches": ["<all_urls>"],
-      "js": ["content.js", "buttons.js", "bait.js"]
+      "js": ["content.js", "buttons.js", "bait.js", "video_ad.js"]
     }
   ]
 }
