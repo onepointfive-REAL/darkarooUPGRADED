@@ -17,8 +17,7 @@ Most interestingly, it features YouTube ad integration that pauses ads **if you'
 ![Scam buttons](github_assets/scams.gif)
 - **Unskippable auto-playing volume-on floating video ads**: basically what the title says
 
-Note: lag is from post-processing, it's smooth in the extension, i don't know how to properly trim videos with ffmpeg.
-https://github.com/user-attachments/assets/039dc03d-9ffa-49c0-9e80-72b33eeaedaf
+https://github.com/user-attachments/assets/20a2552c-1b30-4a0c-8b1e-36271ab33b31
 
 #### BUT! You can close them by yelling "Bussin Industries"
 vidfeo here
