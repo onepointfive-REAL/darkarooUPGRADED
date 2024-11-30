@@ -48,9 +48,13 @@ class BostonDetector:
                             text = self.recognizer.recognize_google(audio)
                             print(text)
                             if "boston industries" in text.lower():
-                                asyncio.run(self.send_message({"phrase": True}))
+                                asyncio.run(self.send_message({"phrase": True, "error": None}))
+                            else:
+                                asyncio.run(self.send_message({"phrase": False, "error": "invalid word: " + text}))
                         except sr.UnknownValueError:
-                            pass
+                            asyncio.run(self.send_message({"phrase": False, "error": "could not understand audio"}))
+                    else:
+                        asyncio.run(self.send_message({"phrase": False, "error": "volume too low"}))
                 except sr.WaitTimeoutError:
                     continue
                 except KeyboardInterrupt:

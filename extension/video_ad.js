@@ -6,7 +6,7 @@ let state = {
     ws: null
 };
 
-const CONFIG = {
+const VID_CONFIG = {
     videos: ['video1.mp4', 'video2.mp4', 'video3.mp4', 'video4.mp4', 'video5.mp4', 'video6.mp4'],
     delays: {
         initial: () => Math.floor(Math.random() * (5 - 2 + 1) + 2) * 1000,      // 2-5s
@@ -32,9 +32,36 @@ const CONFIG = {
             height: 100%;
             display: block;
             object-fit: cover;
+        `,
+        errorMsg: `
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #fff;
+            background: rgba(0,0,0,0.5);
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            z-index: 999999;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         `
     }
 };
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
+shuffleArray(VID_CONFIG.videos);
 
 function initWebSocket() {
     if (state.ws) return;
@@ -43,8 +70,27 @@ function initWebSocket() {
         state.ws = new WebSocket('ws://localhost:8766');
         state.ws.onmessage = ({data}) => {
             try {
-                if (JSON.parse(data).phrase && state.window) {
+                const response = JSON.parse(data);
+                
+                console.log(response)
+                // Create/update error message element
+                let errorMsg = document.getElementById('voice-error-msg');
+                if (!errorMsg && state.window) {
+                    errorMsg = document.createElement('div');
+                    errorMsg.id = 'voice-error-msg';
+                    errorMsg.style.cssText = VID_CONFIG.styles.errorMsg;
+                    document.body.appendChild(errorMsg);
+                }
+
+                if (response.phrase) {
                     removeAd();
+                } else if (errorMsg && response.error) {
+                    errorMsg.textContent = response.error;
+                    errorMsg.style.opacity = '1';
+ 
+                    setTimeout(() => {
+                        errorMsg.style.opacity = '0';
+                    }, 3000);
                 }
             } catch (err) {
                 console.error('WebSocket message error:', err);
@@ -58,13 +104,13 @@ function initWebSocket() {
 async function createAd() {
     if (!state.enabled || state.window) return;
 
-    const videoSrc = chrome.runtime.getURL(`data/videos/${CONFIG.videos[state.videoIndex]}`);
+    const videoSrc = chrome.runtime.getURL(`data/videos/${VID_CONFIG.videos[state.videoIndex]}`);
     const silentSrc = chrome.runtime.getURL('data/videos/silent.mp4');
-    state.videoIndex = (state.videoIndex + 1) % CONFIG.videos.length;
+    state.videoIndex = (state.videoIndex + 1) % VID_CONFIG.videos.length;
 
     const adWindow = document.createElement('div');
     adWindow.className = 'floating-video-ad';
-    adWindow.style.cssText = CONFIG.styles.window;
+    adWindow.style.cssText = VID_CONFIG.styles.window;
 
     // Silent video iframe trick for autoplay
     const iframe = document.createElement('iframe');
@@ -73,7 +119,7 @@ async function createAd() {
     iframe.src = silentSrc;
 
     const video = document.createElement('video');
-    video.style.cssText = CONFIG.styles.video;
+    video.style.cssText = VID_CONFIG.styles.video;
     video.src = videoSrc;
     video.autoplay = true;
     video.muted = false;
@@ -106,7 +152,7 @@ async function removeAd() {
 async function scheduleNext(isInitial = false) {
     if (!state.enabled) return;
 
-    const delay = isInitial ? CONFIG.delays.initial() : CONFIG.delays.between();
+    const delay = isInitial ? VID_CONFIG.delays.initial() : VID_CONFIG.delays.between();
     await new Promise(r => setTimeout(r, delay));
 
     if (state.enabled && !state.window) {
