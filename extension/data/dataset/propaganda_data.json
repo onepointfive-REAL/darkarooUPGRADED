@@ -1,0 +1,147 @@
+[
+  {
+    "url": "https://www.utorrent.com",
+    "reason": "The description explicitly mentions Linux as one of the supported platforms for µTorrent.",
+    "confidence": 0.9
+  },
+  {
+    "url": "https://www.softpedia.com",
+    "reason": "The description explicitly mentions Linux as one of the supported platforms for software downloads.",
+    "confidence": 0.9
+  },
+  {
+    "url": "https://www.videolan.org",
+    "reason": "VLC Media Player is widely used on Linux systems and is often associated with Linux due to its open-source nature and compatibility with various Linux distributions.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.ubuntu.com",
+    "reason": "The content explicitly mentions Ubuntu, which is a popular Linux distribution.",
+    "confidence": 1
+  },
+  {
+    "url": "https://www.raspberrypi.org",
+    "reason": "Raspberry Pi typically runs on Linux-based operating systems like Raspbian, which is based on Debian.",
+    "confidence": 0.9
+  },
+  {
+    "url": "https://git-scm.com",
+    "reason": "Git is commonly used in Linux environments and is often pre-installed or easily installable on Linux distributions.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.redhat.com",
+    "reason": "Red Hat is explicitly mentioned as a leading provider of Linux solutions.",
+    "confidence": 0.95
+  },
+  {
+    "url": "https://alternativeto.net",
+    "reason": "The content explicitly mentions Linux as one of the platforms for which app alternatives are provided.",
+    "confidence": 0.9
+  },
+  {
+    "url": "https://www.1001fonts.com",
+    "reason": "The description explicitly mentions Linux as one of the supported operating systems for font downloads.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.cyberciti.biz",
+    "reason": "The title, description, and slogan all explicitly mention Linux, indicating a strong focus on Linux-related content.",
+    "confidence": 0.95
+  },
+  {
+    "url": "https://www.linuxmint.com",
+    "reason": "The content explicitly mentions Linux Mint, which is a popular Linux distribution.",
+    "confidence": 1
+  },
+  {
+    "url": "https://slashdot.org",
+    "reason": "The description explicitly mentions 'Linux' and 'open source', which are closely associated with Linux.",
+    "confidence": 0.9
+  },
+  {
+    "url": "https://www.cpanel.net",
+    "reason": "cPanel is commonly used on Linux-based web hosting servers, and CloudLinux mentioned in the description is a Linux distribution.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.asp.net",
+    "reason": "The description mentions that ASP.NET Core is available on Linux.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.linode.com",
+    "reason": "Linode, now part of Akamai, is known for providing Linux-based virtual servers.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.libreoffice.org",
+    "reason": "LibreOffice is an open-source software often associated with Linux distributions and is commonly pre-installed or recommended for Linux users.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.debian.org",
+    "reason": "The content explicitly mentions Debian, which is a well-known Linux distribution.",
+    "confidence": 1
+  },
+  {
+    "url": "https://ubuntuforums.org",
+    "reason": "The content explicitly mentions Ubuntu, which is a popular Linux distribution.",
+    "confidence": 1
+  },
+  {
+    "url": "https://www.centos.org",
+    "reason": "The content explicitly mentions CentOS, which is a Linux distribution.",
+    "confidence": 1
+  },
+  {
+    "url": "https://www.gnu.org",
+    "reason": "The GNU Project is closely associated with Linux, providing essential tools and the philosophy behind free software which Linux distributions heavily rely on.",
+    "confidence": 0.9
+  },
+  {
+    "url": "https://www.archlinux.org",
+    "reason": "The content explicitly mentions Arch Linux, a GNU/Linux distribution.",
+    "confidence": 1
+  },
+  {
+    "url": "https://www.linuxquestions.org",
+    "reason": "The content explicitly mentions Linux, includes a Linux-specific forum, and the URL contains 'linux'.",
+    "confidence": 0.95
+  },
+  {
+    "url": "https://www.kali.org",
+    "reason": "Kali Linux is explicitly mentioned, which is a well-known Linux distribution.",
+    "confidence": 1
+  },
+  {
+    "url": "https://launchpad.net",
+    "reason": "Launchpad is a platform primarily used by the Ubuntu community for open source project collaboration, which is a Linux distribution.",
+    "confidence": 0.9
+  },
+  {
+    "url": "https://www.virtualbox.org",
+    "reason": "Oracle VirtualBox supports running multiple operating systems, including various Linux distributions, on a single machine.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.gimp.org",
+    "reason": "GIMP is widely used on Linux platforms and often associated with Linux distributions.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://openwrt.org",
+    "reason": "The content explicitly mentions 'Linux for Embedded Devices' and 'secure Linux for routers', indicating a direct relation to Linux.",
+    "confidence": 0.95
+  },
+  {
+    "url": "https://ffmpeg.org",
+    "reason": "FFmpeg is widely used in Linux environments for multimedia processing.",
+    "confidence": 0.8
+  },
+  {
+    "url": "https://www.musescore.org",
+    "reason": "The description explicitly mentions Linux as one of the supported platforms for MuseScore Studio.",
+    "confidence": 0.9
+  }
+]
