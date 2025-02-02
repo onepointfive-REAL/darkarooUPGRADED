@@ -13,7 +13,7 @@ Most interestingly, it features YouTube ad integration that pauses ads **if you'
 
 - **Anti-Adblock detection**: it bricks any website you load if you have an adblocker installed.
 ![Adblocker](github_assets/adblocker.png)
-- **Scam buttons**: frequently spawns scam-looking buttons in the corners of your screen. Clicking has 50% of working, 50% of redirecting.
+- **Scam buttons**: frequently spawns scam-looking buttons in the corners of your screen. Clicking has 50% of working, 50% of redirecting to a fork bomb.
 ![Scam buttons](github_assets/scams.gif)
 - **Unskippable auto-playing volume-on floating video ads**: basically what the title says
 
