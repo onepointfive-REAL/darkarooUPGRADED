@@ -1,13 +1,13 @@
-# Darkaroo
+# Darkaroo UPGRADED
 
-Darkaroo is a Chrome extension that gives you **ads** everywhere. 
+Darkaroo UPGRADED is a Chrome extension that gives you **ads** everywhere. 
 
 Most interestingly, it features YouTube ad integration that pauses ads **if you're looking away from the screen**, and unskippable ad popups that close only when you **yell** `Bussin Industries`.
 
 ### Extension - User Interface (its locked)
-![Darkaroo user interface](github_assets/cover.png)
+![Darkaroo UPGRADED user interface](github_assets/cover.png)
 ### Extension - Example after ~3 minutes on google.com
-![Darkaroo in action](github_assets/website.png)
+![Darkaroo UPGRADED in action](github_assets/website.png)
 
 ## Features
 
