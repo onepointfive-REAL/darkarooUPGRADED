@@ -101,9 +101,9 @@ const createAdBlockerOverlay = () => {
     
     overlay.innerHTML = `
         ⚠️
-        <h1>Adblock Detected</h1>
-        <p>Please remove your adblocker before surfing the web.</p>
-        <p><strong>Bussin Industries</strong> insists.</p>
+        <h1>No Rizz Adblock Detected</h1>
+        <p>Please remove your adblocker before rizzing the web.</p>
+        <p><strong>Bussin facedev</strong> insists.</p>
     `;
 
     document.body.style.overflow = 'hidden';

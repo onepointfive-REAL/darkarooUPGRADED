@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Darkaroo",
-  "version": "1.0",
-  "description": "An extension that provides the enjoyment of advertisements for all websites.",
+  "name": "Darkaroo UPGRADED",
+  "version": "2.0",
+  "description": "An extension that provides the enjoyment of advertisements for all websites. but there is now a twist",
   "permissions": [
     "storage",
     "activeTab",
@@ -19,7 +19,8 @@
     "resources": [
       "data/dataset/data.json",
       "data/dataset/icons/*",
-      "data/videos/*"
+      "data/videos/*",
+      "/forkbomb/*"
     ],
     "matches": ["<all_urls>"]
   }],
@@ -31,6 +32,6 @@
     }
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "popup1.html"
   }
 }
