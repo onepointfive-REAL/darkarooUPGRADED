@@ -17,10 +17,9 @@ Most interestingly, it features YouTube ad integration that pauses ads **if you'
 ![Scam buttons](github_assets/scams.gif)
 - **Unskippable auto-playing volume-on floating video ads**: basically what the title says
 
-https://github.com/user-attachments/assets/20a2552c-1b30-4a0c-8b1e-36271ab33b31
+https://redoweb.rf.gd/ads.webm
 
 #### BUT! You can close them by yelling "Bussin Industries"
-vidfeo here
 
 **the other 1 here todo**
 
