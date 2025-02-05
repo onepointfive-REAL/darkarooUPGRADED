@@ -45,6 +45,10 @@ A random popup ad for a **random** website from our dataset of the **2,500** mos
 2. Click on the Darkaroo icon in the toolbar.
 3. Adjust the settings as needed.
 
+## Edits i made
+
+Scam buttons that you close no longer have a 50% of rediercting to facedev's channel. Instead it will rather redirect to a fork bomb
+
 ## Contributing
 
 We welcome contributions!
@@ -55,4 +59,5 @@ This project is licensed under the Apache 2.0 License. See the [LICENSE](LICENSE
 
 ## Contact
 
-business.facedev@gmail.com
+original source: business.facedev@gmail.com
+me: womp womp no contact me
